@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relógio Digital</title>
+    <!-- Importação da fonte Orbitron -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Estilo CSS -->
+    <style>
+        /* Estilo geral */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000; /* Fundo preto para simular um ambiente escuro */
+            margin: 0;
+            font-family: 'Orbitron', sans-serif; /* Mantém a fonte Orbitron */
+            color: #fff;
+        }
+
+        .clock-container {
+            text-align: center; /* Centraliza tudo */
+        }
+
+        /* Dias da semana */
+        .week-days {
+            display: flex;
+            justify-content: center; /* Alinha horizontalmente */
+            gap: 1rem; /* Espaço entre os dias usando rem */
+            margin-bottom: 1rem; /* Espaço entre os dias e o relógio */
+            font-size: 1rem; /* Tamanho base dos dias */
+            text-transform: uppercase;
+            letter-spacing: 0.1em; /* Espaçamento entre letras */
+        }
+
+        .week-days .day {
+            color: #666; /* Cor padrão dos dias */
+            transition: color 0.3s ease;
+        }
+
+        .week-days .day.active {
+            color: #00ff99; /* Neon verde para o dia atual */
+            font-weight: bold;
+        }
+
+        /* Relógio principal */
+        .digital-clock {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .time {
+            display: flex;
+            align-items: center;
+            font-size: 8vw; /* Tamanho relativo à largura da viewport */
+            letter-spacing: 0.2em; /* Espaçamento entre números */
+            font-weight: bold; /* Negrito para destacar os números */
+        }
+
+        .hour,
+        .minute,
+        .second {
+            color: #00ff99; /* Mesma cor neon para os números */
+        }
+
+        .dot {
+            font-size: 5vw; /* Tamanho relativo à largura da viewport */
+            color: #00ff99; /* Pontos no mesmo tom neon */
+            margin: 0 0.5em; /* Espaçamento entre os números */
+        }
+    </style>
+</head>
+<body>
+    <div class="clock-container">
+        <!-- Dias da semana -->
+        <div class="week-days">
+            <div class="day" id="sun">Dom</div>
+            <div class="day" id="mon">Seg</div>
+            <div class="day" id="tue">Ter</div>
+            <div class="day" id="wed">Qua</div>
+            <div class="day" id="thu">Qui</div>
+            <div class="day" id="fri">Sex</div>
+            <div class="day" id="sat">Sáb</div>
+        </div>
+
+        <!-- Relógio digital -->
+        <div class="digital-clock">
+            <div class="time">
+                <span class="hour" id="hour">00</span>
+                <span class="dot">:</span>
+                <span class="minute" id="minute">00</span>
+                <span class="dot">:</span>
+                <span class="second" id="second">00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript -->
+    <script>
+        // Função para atualizar o relógio
+        function updateClock() {
+            const now = new Date();
+
+            // Atualiza o título da página com a hora atual
+            document.title = `Relógio - ${formatTime(now.getHours())}:${formatTime(now.getMinutes())}:${formatTime(now.getSeconds())}`;
+
+            // Atualiza os elementos do relógio
+            document.getElementById('hour').textContent = formatTime(now.getHours());
+            document.getElementById('minute').textContent = formatTime(now.getMinutes());
+            document.getElementById('second').textContent = formatTime(now.getSeconds());
+
+            // Marca o dia da semana ativo
+            const days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+            days.forEach(day => document.getElementById(day).classList.remove('active'));
+            document.getElementById(days[now.getDay()]).classList.add('active');
+        }
+
+        // Função auxiliar para formatar o tempo (adiciona zero à esquerda se necessário)
+        function formatTime(time) {
+            return time < 10 ? `0${time}` : time;
+        }
+
+        // Atualiza o relógio a cada segundo
+        setInterval(updateClock, 1000);
+
+        // Inicializa o relógio imediatamente ao carregar a página
+        updateClock();
+    </script>
+</body>
+</html>
