@@ -18,10 +18,21 @@
             margin: 0;
             font-family: 'Orbitron', sans-serif; /* Mantém a fonte Orbitron */
             color: #fff;
+            perspective: 1000px; /* Adiciona perspectiva 3D */
         }
 
         .clock-container {
             text-align: center; /* Centraliza tudo */
+            transform-style: preserve-3d; /* Preserva o efeito 3D */
+            transform: rotateX(15deg) rotateY(15deg); /* Rotação 3D */
+            box-shadow: 
+                0 0 20px #00ff99, /* Sombra neon verde */
+                0 0 40px #00ff99,
+                0 0 60px #00ff99,
+                0 0 80px #00ff99;
+            padding: 2rem;
+            border-radius: 15px; /* Borda arredondada */
+            background: rgba(0, 0, 0, 0.8); /* Fundo semi-transparente */
         }
 
         /* Dias da semana */
