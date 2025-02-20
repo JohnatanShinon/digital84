@@ -1,0 +1,63 @@
+/* Estilo geral */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000; /* Fundo preto para simular um ambiente escuro */
+    margin: 0;
+    font-family: 'Orbitron', sans-serif; /* Mantém a fonte Orbitron */
+    color: #fff;
+}
+
+.clock-container {
+    text-align: center; /* Centraliza tudo */
+}
+
+/* Dias da semana */
+.week-days {
+    display: flex;
+    justify-content: center; /* Alinha horizontalmente */
+    gap: 1rem; /* Espaço entre os dias usando rem */
+    margin-bottom: 1rem; /* Espaço entre os dias e o relógio */
+    font-size: 1rem; /* Tamanho base dos dias */
+    text-transform: uppercase;
+    letter-spacing: 0.1em; /* Espaçamento entre letras */
+}
+
+.week-days .day {
+    color: #666; /* Cor padrão dos dias */
+    transition: color 0.3s ease;
+}
+
+.week-days .day.active {
+    color: #00ff99; /* Neon verde para o dia atual */
+    font-weight: bold;
+}
+
+/* Relógio principal */
+.digital-clock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time {
+    display: flex;
+    align-items: center;
+    font-size: 8vw; /* Tamanho relativo à largura da viewport */
+    letter-spacing: 0.2em; /* Espaçamento entre números */
+    font-weight: bold; /* Negrito para destacar os números */
+}
+
+.hour,
+.minute,
+.second {
+    color: #00ff99; /* Mesma cor neon para os números */
+}
+
+.dot {
+    font-size: 5vw; /* Tamanho relativo à largura da viewport */
+    color: #00ff99; /* Pontos no mesmo tom neon */
+    margin: 0 0.5em; /* Espaçamento entre os números */
+}
