@@ -4,83 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relógio Digital</title>
-    <!-- Importação da fonte Orbitron -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <!-- Estilo CSS -->
     <style>
+        /* Carrega a fonte DS-Digital Bold */
+        @font-face {
+            font-family: 'DS-Digital';
+            src: url('DS-Digital Bold.TTF') format('truetype'); /* Ajuste o caminho conforme necessário */
+            font-weight: bold;
+            font-style: normal;
+        }
+
         /* Estilo geral */
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #000; /* Fundo preto para simular um ambiente escuro */
+            background-color: #000;
             margin: 0;
-            font-family: 'Orbitron', sans-serif; /* Mantém a fonte Orbitron */
+            font-family: 'DS-Digital', sans-serif; /* Usa DS-Digital como fonte principal */
             color: #fff;
-            perspective: 1000px; /* Adiciona perspectiva 3D */
+            perspective: 1000px;
         }
-
         .clock-container {
-            text-align: center; /* Centraliza tudo */
-            transform-style: preserve-3d; /* Preserva o efeito 3D */
-            transform: rotateX(0deg) rotateY(0deg); /* Rotação 3D */
+            text-align: center;
+            transform-style: preserve-3d;
+            transform: rotateX(0deg) rotateY(0deg);
             box-shadow: 
-                0 0 20px #00ff99, /* Sombra neon verde */
+                0 0 20px #00ff99,
                 0 0 20px #00ff99,
                 0 0 40px #00ff99,
                 0 0 40px #00ff99;
             padding: 2rem;
-            border-radius: 10px; /* Borda arredondada */
-            background: rgba(0, 0, 0, 0.8); /* Fundo semi-transparente */
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.8);
         }
-
-        /* Dias da semana */
         .week-days {
             display: flex;
-            justify-content: center; /* Alinha horizontalmente */
-            gap: 1.5rem; /* Espaço entre os dias usando rem */
-            margin-bottom: 1rem; /* Espaço entre os dias e o relógio */
-            font-size: 2rem; /* Tamanho base dos dias */
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 2rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em; /* Espaçamento entre letras */
+            letter-spacing: 0.1em;
         }
-
         .week-days .day {
-            color: #666; /* Cor padrão dos dias */
+            color: #666;
             transition: color 0.3s ease;
         }
-
         .week-days .day.active {
-            color: #00ff99; /* Neon verde para o dia atual */
+            color: #00ff99;
             font-weight: bold;
         }
-
-        /* Relógio principal */
         .digital-clock {
             display: flex;
             justify-content: center;
             align-items: center;
         }
-
         .time {
             display: flex;
             align-items: center;
-            font-size: 8vw; /* Tamanho relativo à largura da viewport */
-            letter-spacing: 0.2em; /* Espaçamento entre números */
-            font-weight: bold; /* Negrito para destacar os números */
+            font-size: 8vw;
+            letter-spacing: 0.2em;
+            font-weight: bold;
         }
-
         .hour,
         .minute,
         .second {
-            color: #00ff99; /* Mesma cor neon para os números */
+            color: #00ff99;
         }
-
         .dot {
-            font-size: 5vw; /* Tamanho relativo à largura da viewport */
-            color: #00ff99; /* Pontos no mesmo tom neon */
-            margin: 0 0.2em; /* Espaçamento entre os números */
+            font-size: 5vw;
+            color: #00ff99;
+            margin: 0 0.2em;
         }
     </style>
 </head>
@@ -96,7 +92,6 @@
             <div class="day" id="fri">Sex</div>
             <div class="day" id="sat">Sáb</div>
         </div>
-
         <!-- Relógio digital -->
         <div class="digital-clock">
             <div class="time">
@@ -108,36 +103,23 @@
             </div>
         </div>
     </div>
-
     <!-- Script JavaScript -->
     <script>
         // Função para atualizar o relógio
         function updateClock() {
             const now = new Date();
-
-            // Atualiza o título da página com a hora atual
             document.title = `Relógio - ${formatTime(now.getHours())}:${formatTime(now.getMinutes())}:${formatTime(now.getSeconds())}`;
-
-            // Atualiza os elementos do relógio
             document.getElementById('hour').textContent = formatTime(now.getHours());
             document.getElementById('minute').textContent = formatTime(now.getMinutes());
             document.getElementById('second').textContent = formatTime(now.getSeconds());
-
-            // Marca o dia da semana ativo
             const days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
             days.forEach(day => document.getElementById(day).classList.remove('active'));
             document.getElementById(days[now.getDay()]).classList.add('active');
         }
-
-        // Função auxiliar para formatar o tempo (adiciona zero à esquerda se necessário)
         function formatTime(time) {
             return time < 10 ? `0${time}` : time;
         }
-
-        // Atualiza o relógio a cada segundo
         setInterval(updateClock, 1000);
-
-        // Inicializa o relógio imediatamente ao carregar a página
         updateClock();
     </script>
 </body>
