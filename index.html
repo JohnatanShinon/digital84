@@ -24,14 +24,14 @@
         .clock-container {
             text-align: center; /* Centraliza tudo */
             transform-style: preserve-3d; /* Preserva o efeito 3D */
-            transform: rotateX(5deg) rotateY(1deg); /* Rotação 3D */
+            transform: rotateX(0deg) rotateY(0deg); /* Rotação 3D */
             box-shadow: 
                 0 0 20px #00ff99, /* Sombra neon verde */
+                0 0 20px #00ff99,
                 0 0 40px #00ff99,
-                0 0 60px #00ff99,
-                0 0 80px #00ff99;
+                0 0 40px #00ff99;
             padding: 2rem;
-            border-radius: 15px; /* Borda arredondada */
+            border-radius: 10px; /* Borda arredondada */
             background: rgba(0, 0, 0, 0.8); /* Fundo semi-transparente */
         }
 
@@ -39,9 +39,9 @@
         .week-days {
             display: flex;
             justify-content: center; /* Alinha horizontalmente */
-            gap: 1rem; /* Espaço entre os dias usando rem */
+            gap: 1.5rem; /* Espaço entre os dias usando rem */
             margin-bottom: 1rem; /* Espaço entre os dias e o relógio */
-            font-size: 3rem; /* Tamanho base dos dias */
+            font-size: 2rem; /* Tamanho base dos dias */
             text-transform: uppercase;
             letter-spacing: 0.1em; /* Espaçamento entre letras */
         }
@@ -80,7 +80,7 @@
         .dot {
             font-size: 5vw; /* Tamanho relativo à largura da viewport */
             color: #00ff99; /* Pontos no mesmo tom neon */
-            margin: 0 0.5em; /* Espaçamento entre os números */
+            margin: 0 0.2em; /* Espaçamento entre os números */
         }
     </style>
 </head>
