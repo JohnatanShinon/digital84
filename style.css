@@ -61,3 +61,14 @@ body {
     color: #00ff99; /* Pontos no mesmo tom neon */
     margin: 0 0.5em; /* Espaçamento entre os números */
 }
+
+body {
+    font-family: 'DS-Digital', sans-serif; /* Substitui Orbitron por DS-Digital */
+}
+
+.time {
+    font-family: 'DS-Digital', sans-serif; /* Aplica DS-Digital ao relógio */
+    font-size: 8vw;
+    letter-spacing: 0.2em;
+    font-weight: bold;
+}
